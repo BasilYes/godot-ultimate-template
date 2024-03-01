@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://bxas66xkpkplr"]
+
+[ext_resource type="Script" path="res://scripts/platformer_character.gd" id="2_oyhu2"]
+[ext_resource type="Texture2D" uid="uid://br2nmffh6fwvn" path="res://icon.svg" id="3_nvthu"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="5_8dixq"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="6_222lm"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="7_hry76"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="8_fxcx1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cbs38"]
+height = 54.0
+
+[node name="PlatformerCharacter" type="CharacterBody2D"]
+script = ExtResource("2_oyhu2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -27)
+shape = SubResource("CapsuleShape2D_cbs38")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+scale = Vector2(0.15625, 0.421875)
+texture = ExtResource("3_nvthu")
+
+[node name="StateChart" type="Node" parent="."]
+script = ExtResource("5_8dixq")
+
+[node name="Movement" type="Node" parent="StateChart"]
+script = ExtResource("6_222lm")
+initial_state = NodePath("Ground")
+
+[node name="Ground" type="Node" parent="StateChart/Movement"]
+script = ExtResource("7_hry76")
+
+[node name="Fall" type="Node" parent="StateChart/Movement/Ground"]
+script = ExtResource("8_fxcx1")
+to = NodePath("../../Air")
+event = &"fall"
+
+[node name="Air" type="Node" parent="StateChart/Movement"]
+script = ExtResource("7_hry76")
+
+[node name="Landing" type="Node" parent="StateChart/Movement/Air"]
+script = ExtResource("8_fxcx1")
+to = NodePath("../../Ground")
+event = &"landing"
+
+[connection signal="state_physics_processing" from="StateChart/Movement/Ground" to="." method="_on_ground_state_physics_processing"]
+[connection signal="state_physics_processing" from="StateChart/Movement/Air" to="." method="_on_air_state_physics_processing"]
+[connection signal="taken" from="StateChart/Movement/Air/Landing" to="." method="_on_landing_taken"]
