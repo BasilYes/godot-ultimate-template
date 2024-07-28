@@ -1,10 +1,18 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
 config_version=5
 
 [application]
 
-config/name="DefaultTamplate"
-config/features=PackedStringArray("4.2")
-config/tags=PackedStringArray("in_progress", "tamplate")
+config/name="DefaultTemplate"
+config/tags=PackedStringArray("in_progress", "template")
+config/features=PackedStringArray("4.3")
 
 [debug]
 
@@ -14,10 +22,21 @@ gdscript/warnings/untyped_declaration=1
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/always_on_top=true
 window/size/window_width_override=960
 window/size/window_height_override=540
 window/stretch/mode="canvas_items"
 window/stretch/aspect="keep_height"
+
+[file_customization]
+
+folder_colors={
+"res://addons/": "gray",
+"res://assets/": "orange",
+"res://resources/": "yellow",
+"res://scenes/": "green",
+"res://scripts/": "purple"
+}
 
 [godots]
 

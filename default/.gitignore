@@ -42,7 +42,7 @@ bin
 /.vscode
 
 # Blender backups
-*.blend?*
+*.blend[0-9]*
 
-# Office tmp
-**.~*#
+# tmp files
+**.*~*

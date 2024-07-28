@@ -1,5 +1,17 @@
 # Godot 4+ specific ignores
+.import/
 .godot/
+export.cfg
+export_presets.cfg
+
+# Imported translations (automatically generated from CSV files)
+*.translation
+
+# No vcs folders
+**-novcs*/
+
+# android build directory
+/android
 
 # Generated directories with binaries
 build
@@ -7,12 +19,6 @@ bin
 
 # Addons binaries
 !/addons/**/bin
-
-# No vcs folders
-**-novcs*/
-
-# android build directory
-/android
 
 # Binaries
 *.o
@@ -36,7 +42,7 @@ bin
 /.vscode
 
 # Blender backups
-*.blend?*
+*.blend[0-9]*
 
-# Office tmp
-**.~*#
+# tmp files
+**.*~*
