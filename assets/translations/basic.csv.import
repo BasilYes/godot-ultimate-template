@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://csfhb5jbg4ogl"
+
+[deps]
+
+files=["res://assets/translations/basic.ru.translation", "res://assets/translations/basic.en.translation", "res://assets/translations/basic.fr.translation", "res://assets/translations/basic.de.translation", "res://assets/translations/basic.tr.translation"]
+
+source_file="res://assets/translations/basic.csv"
+dest_files=["res://assets/translations/basic.ru.translation", "res://assets/translations/basic.en.translation", "res://assets/translations/basic.fr.translation", "res://assets/translations/basic.de.translation", "res://assets/translations/basic.tr.translation"]
+
+[params]
+
+compress=true
+delimiter=0

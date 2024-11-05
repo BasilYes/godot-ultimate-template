@@ -13,6 +13,11 @@ config_version=5
 config/name="DefaultTemplate"
 config/tags=PackedStringArray("in_progress", "template")
 config/features=PackedStringArray("4.3")
+config/icon="res://icon.svg"
+
+[audio]
+
+buses/default_bus_layout="res://resources/audio_bus_layout.tres"
 
 [debug]
 
@@ -41,3 +46,7 @@ folder_colors={
 [godots]
 
 version_hint=""
+
+[internationalization]
+
+locale/translations=PackedStringArray("res://assets/translations/basic.de.translation", "res://assets/translations/basic.en.translation", "res://assets/translations/basic.fr.translation", "res://assets/translations/basic.ru.translation", "res://assets/translations/basic.tr.translation")
