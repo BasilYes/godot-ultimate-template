@@ -23,20 +23,20 @@ mkdir -p $SCRIPT_DIR/scenes
 mkdir -p $SCRIPT_DIR/scripts
 
 git init
-read -p "Add godot-easy-multiplayer y/n:" yesorno
-if [[ "$yesorno" == "y" ]] || [[ "$yesorno" == "yes" ]]; then
+read -p "Add godot-easy-multiplayer y/n:" godot_easy_multiplayer
+read -p "Add godot-transitions y/n:" godot_transitions
+read -p "Add godot-fast-ui y/n:" godot_fast_ui
+read -p "Add godot-simple-saves y/n:" godot_simple_saves
+if [[ "$godot_easy_multiplayer" == "y" ]] || [[ "$godot_easy_multiplayer" == "yes" ]]; then
     git submodule add git@github.com:FeatureKillersGames/godot-easy-multiplayer.git addons/godot-easy-multiplayer
 fi
-read -p "Add godot-transitions y/n:" yesorno
-if [[ "$yesorno" == "y" ]] || [[ "$yesorno" == "yes" ]]; then
+if [[ "$godot_transitions" == "y" ]] || [[ "$godot_transitions" == "yes" ]]; then
     git submodule add git@github.com:FeatureKillersGames/godot-transitions.git addons/godot-transitions
 fi
-read -p "Add godot-fast-ui y/n:" yesorno
-if [[ "$yesorno" == "y" ]] || [[ "$yesorno" == "yes" ]]; then
+if [[ "$godot_fast_ui" == "y" ]] || [[ "$godot_fast_ui" == "yes" ]]; then
     git submodule add git@github.com:FeatureKillersGames/godot-fast-ui.git addons/godot-fast-ui
 fi
-read -p "Add godot-simple-saves y/n:" yesorno
-if [[ "$yesorno" == "y" ]] || [[ "$yesorno" == "yes" ]]; then
+if [[ "$godot_simple_saves" == "y" ]] || [[ "$godot_simple_saves" == "yes" ]]; then
     git submodule add git@github.com:FeatureKillersGames/godot-simple-saves.git addons/godot-simple-saves
 fi
 git add .
