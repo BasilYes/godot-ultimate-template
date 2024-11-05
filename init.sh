@@ -3,26 +3,22 @@
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 cd $SCRIPT_DIR
 
-mkdir $SCRIPT_DIR/assets
-mkdir $SCRIPT_DIR/assets/gdignore
-mkdir $SCRIPT_DIR/assets/sounds
-mkdir $SCRIPT_DIR/assets/textures
-mkdir $SCRIPT_DIR/assets/textures/ui
-mkdir $SCRIPT_DIR/assets/translations
-mkdir $SCRIPT_DIR/build
-mkdir $SCRIPT_DIR/build/android
-mkdir $SCRIPT_DIR/build/linux
-mkdir $SCRIPT_DIR/build/web
-mkdir $SCRIPT_DIR/build/win
+mkdir -p $SCRIPT_DIR/assets/gdignore
+mkdir -p $SCRIPT_DIR/assets/sounds
+mkdir -p $SCRIPT_DIR/assets/textures
+mkdir -p $SCRIPT_DIR/assets/textures/ui
+mkdir -p $SCRIPT_DIR/assets/translations
+mkdir -p $SCRIPT_DIR/build/android
+mkdir -p $SCRIPT_DIR/build/linux
+mkdir -p $SCRIPT_DIR/build/web
+mkdir -p $SCRIPT_DIR/build/win
 touch $SCRIPT_DIR/build/.gdignore
-touch $SCRIPT_DIR/build/.gdignore
-touch $SCRIPT_DIR/resources
-touch $SCRIPT_DIR/resources/materials
-touch $SCRIPT_DIR/resources/meshes
-touch $SCRIPT_DIR/resources/shaders
-touch $SCRIPT_DIR/resources/themes
-touch $SCRIPT_DIR/scenes
-touch $SCRIPT_DIR/scripts
+mkdir -p $SCRIPT_DIR/resources/materials
+mkdir -p $SCRIPT_DIR/resources/meshes
+mkdir -p $SCRIPT_DIR/resources/shaders
+mkdir -p $SCRIPT_DIR/resources/themes
+mkdir -p $SCRIPT_DIR/scenes
+mkdir -p $SCRIPT_DIR/scripts
 
 git init
 read -p "Add godot-easy-multiplayer y/n:" yesorno
