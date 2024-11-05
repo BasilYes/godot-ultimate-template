@@ -3,7 +3,9 @@
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 cd $SCRIPT_DIR
 
+mkdir -p $SCRIPT_DIR/addons
 mkdir -p $SCRIPT_DIR/assets/gdignore
+touch $SCRIPT_DIR/assets/gdignore/.gdignore
 mkdir -p $SCRIPT_DIR/assets/sounds
 mkdir -p $SCRIPT_DIR/assets/textures
 mkdir -p $SCRIPT_DIR/assets/textures/ui
