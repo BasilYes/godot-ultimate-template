@@ -3,7 +3,7 @@
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 cd $SCRIPT_DIR
 
-if [[ "$1" = "init" ]];then
+init () {
     mkdir -p $SCRIPT_DIR/addons
     mkdir -p $SCRIPT_DIR/assets/gdignore
     touch $SCRIPT_DIR/assets/gdignore/.gdignore
@@ -27,7 +27,9 @@ if [[ "$1" = "init" ]];then
     git commit -m "init"
     git reset $(git commit-tree "HEAD^{tree}" -m "init")
     git remote remove origin
-elif [[ "$1" = "addon" ]];then
+}
+
+addon () {
     read -p "Add godot-easy-multiplayer y/n:" godot_easy_multiplayer
     read -p "Add godot-transitions y/n:" godot_transitions
     read -p "Add godot-fast-ui y/n:" godot_fast_ui
@@ -57,4 +59,10 @@ elif [[ "$1" = "addon" ]];then
         git add .
         git commit -m $message
     fi
+}
+
+if [[ "$1" = "init" ]];then
+    init
+elif [[ "$1" = "addon" ]];then
+    addon
 fi
