@@ -34,6 +34,8 @@ addon () {
     read -p "Add godot-transitions y/n:" godot_transitions
     read -p "Add godot-fast-ui y/n:" godot_fast_ui
     read -p "Add godot-simple-saves y/n:" godot_simple_saves
+    read -p "Add godot-smart-analycis y/n:" godot_smart_analycis
+    read -p "Add godot-ads-manager y/n:" godot_ads_manager
     message="add addon "
     if [[ "$godot_easy_multiplayer" == "y" ]] || [[ "$godot_easy_multiplayer" == "yes" ]]; then
         commit=true
@@ -54,6 +56,16 @@ addon () {
         commit=true
         message="${message} godot-simple-saves"
         git submodule add git@github.com:FeatureKillersGames/godot-simple-saves.git addons/godot-simple-saves
+    fi
+    if [[ "$godot_smart_analycis" == "y" ]] || [[ "$godot_smart_analycis" == "yes" ]]; then
+        commit=true
+        message="${message} godot-smart-analycis"
+        git submodule add git@github.com:FeatureKillersGames/godot-smart-analycis.git addons/godot-smart-analycis
+    fi
+    if [[ "$godot_ads_manager" == "y" ]] || [[ "$godot_ads_manager" == "yes" ]]; then
+        commit=true
+        message="${message} godot-ads-manager"
+        git submodule add git@github.com:FeatureKillersGames/godot-ads-manager.git addons/godot-ads-manager
     fi
     if [[ -n $commit ]]; then
         git add .
