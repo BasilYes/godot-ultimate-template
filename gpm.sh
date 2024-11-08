@@ -41,11 +41,11 @@ addon () {
     addons=($(echo -e $addons))
     for i in ${addons[*]};do
         IFS=$'.'
-        i=($i)
+        name=($i)
         IFS=$'/'
-        name=(${i[-2]})
+        name=(${name[-2]})
         name=${name[-1]}
-        git submodule add $i addons/${name}
+        git "submodule" "add" "${i}" "addons/${name}"
     done
     exit 0
     read -p "Add godot-easy-multiplayer y/n:" godot_easy_multiplayer
