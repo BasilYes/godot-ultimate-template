@@ -30,6 +30,7 @@ init () {
 }
 
 addon () {
+    IFS=$'\n'
     addons=""
     for i in $(cat "$SCRIPT_DIR/addonslist");do
         read -p "Add $i y/n:" install
@@ -39,7 +40,12 @@ addon () {
     done
     addons=($(echo -e $addons))
     for i in ${addons[*]};do
-        echo $i
+        IFS=$'.'
+        i=($i)
+        IFS=$'/'
+        name=(${i[-2]})
+        name=${name[-1]}
+        git submodule add $i addons/${name}
     done
     exit 0
     read -p "Add godot-easy-multiplayer y/n:" godot_easy_multiplayer
@@ -57,7 +63,6 @@ addon () {
     if [[ "$godot_transitions" == "y" ]] || [[ "$godot_transitions" == "yes" ]]; then
         commit=true
         message="${message} godot-transitions"
-        git submodule add git@github.com:FeatureKillersGames/godot-transitions.git addons/godot-transitions
     fi
     if [[ "$godot_fast_ui" == "y" ]] || [[ "$godot_fast_ui" == "yes" ]]; then
         commit=true
