@@ -30,6 +30,18 @@ init () {
 }
 
 addon () {
+    addons=""
+    for i in $(cat "$SCRIPT_DIR/addonslist");do
+        read -p "Add $i y/n:" install
+        if [[ "$install" == "y" ]] || [[ "$install" == "yes" ]]; then
+            addons="${addons}\n${i}"
+        fi
+    done
+    addons=($(echo -e $addons))
+    for i in ${addons[*]};do
+        echo $i
+    done
+    exit 0
     read -p "Add godot-easy-multiplayer y/n:" godot_easy_multiplayer
     read -p "Add godot-transitions y/n:" godot_transitions
     read -p "Add godot-fast-ui y/n:" godot_fast_ui
