@@ -47,46 +47,10 @@ addon () {
         name=${name[-1]}
         git "submodule" "add" "${i}" "addons/${name}"
     done
-    exit 0
-    read -p "Add godot-easy-multiplayer y/n:" godot_easy_multiplayer
-    read -p "Add godot-transitions y/n:" godot_transitions
-    read -p "Add godot-fast-ui y/n:" godot_fast_ui
-    read -p "Add godot-simple-saves y/n:" godot_simple_saves
-    read -p "Add godot-smart-analycis y/n:" godot_smart_analycis
-    read -p "Add godot-ads-manager y/n:" godot_ads_manager
-    message="add addon "
-    if [[ "$godot_easy_multiplayer" == "y" ]] || [[ "$godot_easy_multiplayer" == "yes" ]]; then
-        commit=true
-        message="${message} godot-easy-multiplayer"
-        git submodule add git@github.com:FeatureKillersGames/godot-easy-multiplayer.git addons/godot-easy-multiplayer
-    fi
-    if [[ "$godot_transitions" == "y" ]] || [[ "$godot_transitions" == "yes" ]]; then
-        commit=true
-        message="${message} godot-transitions"
-    fi
-    if [[ "$godot_fast_ui" == "y" ]] || [[ "$godot_fast_ui" == "yes" ]]; then
-        commit=true
-        message="${message} godot-fast-ui"
-        git submodule add git@github.com:FeatureKillersGames/godot-fast-ui.git addons/godot-fast-ui
-    fi
-    if [[ "$godot_simple_saves" == "y" ]] || [[ "$godot_simple_saves" == "yes" ]]; then
-        commit=true
-        message="${message} godot-simple-saves"
-        git submodule add git@github.com:FeatureKillersGames/godot-simple-saves.git addons/godot-simple-saves
-    fi
-    if [[ "$godot_smart_analycis" == "y" ]] || [[ "$godot_smart_analycis" == "yes" ]]; then
-        commit=true
-        message="${message} godot-smart-analycis"
-        git submodule add git@github.com:FeatureKillersGames/godot-smart-analycis.git addons/godot-smart-analycis
-    fi
-    if [[ "$godot_ads_manager" == "y" ]] || [[ "$godot_ads_manager" == "yes" ]]; then
-        commit=true
-        message="${message} godot-ads-manager"
-        git submodule add git@github.com:FeatureKillersGames/godot-ads-manager.git addons/godot-ads-manager
-    fi
-    if [[ -n $commit ]]; then
+
+    if [[ -n $addons ]]; then
         git add .
-        git commit -m $message
+        git commit -m "$(echo -e "add submodules\n${addons[*]}")"
     fi
 }
 
