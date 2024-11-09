@@ -27,6 +27,9 @@ init () {
     git commit -m "init"
     git reset $(git commit-tree "HEAD^{tree}" -m "init")
     git remote remove origin
+
+    install addon
+    install template
 }
 
 install () {
