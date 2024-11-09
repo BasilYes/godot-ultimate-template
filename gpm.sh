@@ -29,11 +29,11 @@ init () {
     git remote remove origin
 }
 
-addon () {
+install () {
     IFS=$'\n'
     addons=""
-    for i in $(cat "$SCRIPT_DIR/addonslist");do
-        read -p "Add $i y/n:" install
+    for i in $(cat "$SCRIPT_DIR/${1}slist");do
+        read -p "install $1 $i y/n:" install
         if [[ "$install" == "y" ]] || [[ "$install" == "yes" ]]; then
             addons="${addons}\n${i}"
         fi
@@ -45,7 +45,7 @@ addon () {
         IFS=$'/'
         name=(${name[-2]})
         name=${name[-1]}
-        git "submodule" "add" "${i}" "addons/${name}"
+        git "submodule" "add" "${i}" "${1}s/${name}"
     done
 
     if [[ -n $addons ]]; then
@@ -57,5 +57,7 @@ addon () {
 if [[ "$1" = "init" ]];then
     init
 elif [[ "$1" = "addon" ]];then
-    addon
+    install addon
+elif [[ "$1" = "template" ]];then
+    install template
 fi
