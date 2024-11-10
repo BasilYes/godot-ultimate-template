@@ -85,10 +85,6 @@ test() {
 
 if [[ "$1" = "init" ]];then
     init
-elif [[ "$1" = "addon" ]];then
-    install "$(cat ./installlist)"
-elif [[ "$1" = "template" ]];then
-    install template
-elif [[ "$1" = "test" ]];then
-    test "$(cat ./addonslist)"
+elif [[ "$1" = "install" ]];then
+    install "$(cat ./installlist | grep $2)"
 fi
