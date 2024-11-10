@@ -1,0 +1,7 @@
+templates git@github.com:FeatureKillersGames/godot-menu-banch.git https://github.com/FeatureKillersGames/godot-menu-banch.git
+addons git@github.com:FeatureKillersGames/godot-easy-multiplayer.git https://github.com/FeatureKillersGames/godot-easy-multiplayer.git
+addons git@github.com:FeatureKillersGames/godot-transitions.git git@github.com:FeatureKillersGames/godot-transitions.git
+addons git@github.com:FeatureKillersGames/godot-fast-ui.git https://github.com/FeatureKillersGames/godot-fast-ui.git
+addons git@github.com:FeatureKillersGames/godot-simple-saves.git https://github.com/FeatureKillersGames/godot-simple-saves.git
+addons git@github.com:FeatureKillersGames/godot-smart-analycis.git https://github.com/FeatureKillersGames/godot-smart-analycis.git
+addons git@github.com:FeatureKillersGames/godot-ads-manager.git https://github.com/FeatureKillersGames/godot-ads-manager.git

@@ -28,39 +28,67 @@ init () {
     git reset $(git commit-tree "HEAD^{tree}" -m "init")
     git remote remove origin
 
-    install addon
-    install template
+    install "$(cat ./installlist)"
 }
 
 install () {
-    IFS=$'\n'
-    addons=""
-    for i in $(cat "$SCRIPT_DIR/${1}slist");do
-        read -p "install $1 $i y/n:" install
-        if [[ "$install" == "y" ]] || [[ "$install" == "yes" ]]; then
-            addons="${addons}\n${i}"
-        fi
-    done
-    addons=($(echo -e $addons))
-    for i in ${addons[*]};do
-        IFS=$'.'
-        name=($i)
-        IFS=$'/'
+    NL=$'\n'
+    IFS=$NL
+    list=$1
+    selected=""
+    if [[ -z $2 ]]; then
+        for i in $list;do
+            if [[ -z $i ]];then continue; fi
+            IFS=' '
+            split=($i)
+            if [[ -f .submodules ]] && ([[ -z $(cat .submodules | grep split[1]) ]] || [[ -z $(cat .submodules | grep split[2]) ]]); then continue; fi
+            read -p "install ${split[1]} to ${split[0]} y/n:" install
+            if [[ "$install" == "y" ]] || [[ "$install" == "yes" ]]; then
+                if [[ -z selected ]]; then
+                    selected="${i}"
+                else
+                    selected="${selected}${NL}${i}"
+                fi
+            fi
+        done
+    else
+        selected=$list
+    fi
+    IFS=$NL
+    for i in $selected;do
+        IFS=' '
+        split=($i)
+        if [[ -f .submodules ]] && ([[ -z $(cat .submodules | grep split[1]) ]] || [[ -z $(cat .submodules | grep split[2]) ]]); then continue; fi
+        IFS='.'
+        name=(${split[1]})
+        IFS='/'
         name=(${name[-2]})
         name=${name[-1]}
-        git "submodule" "add" "${i}" "${1}s/${name}"
+        path="${split[0]}/${name}"
+        git "submodule" "add" "${split[1]}" "$path" ||
+        git "submodule" "add" "${split[2]}" "$path"
+        path="./${path}/dependencies"
+        if [[ -f $path ]];then
+            install "$(cat "$path")" yes
+        fi
     done
 
-    if [[ -n $addons ]]; then
+    if [[ -n $selected ]]; then
         git add .
-        git commit -m "$(echo -e "add submodules\n${addons[*]}")"
+        git commit -m "$(echo -e "add submodules\n${selected[1]}")"
     fi
+}
+
+test() {
+    echo $@
 }
 
 if [[ "$1" = "init" ]];then
     init
 elif [[ "$1" = "addon" ]];then
-    install addon
+    install "$(cat ./installlist)"
 elif [[ "$1" = "template" ]];then
     install template
+elif [[ "$1" = "test" ]];then
+    test "$(cat ./addonslist)"
 fi
