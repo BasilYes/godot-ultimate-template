@@ -5,3 +5,4 @@ addons git@github.com:FeatureKillersGames/godot-fast-ui.git https://github.com/F
 addons git@github.com:FeatureKillersGames/godot-simple-saves.git https://github.com/FeatureKillersGames/godot-simple-saves.git
 addons git@github.com:FeatureKillersGames/godot-smart-analycis.git https://github.com/FeatureKillersGames/godot-smart-analycis.git
 addons git@github.com:FeatureKillersGames/godot-ads-manager.git https://github.com/FeatureKillersGames/godot-ads-manager.git
+addons git@github.com:FeatureKillersGames/godot-mesh-importer.git https://github.com/FeatureKillersGames/godot-mesh-importer.git
