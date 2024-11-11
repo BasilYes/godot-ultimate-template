@@ -55,6 +55,7 @@ install () {
         selected=$list
     fi
     IFS=$NL
+    commit=""
     for i in $selected;do
         IFS=' '
         split=($i)
@@ -67,6 +68,7 @@ install () {
         path="${split[0]}/${name}"
         git "submodule" "add" "${split[1]}" "$path" ||
         git "submodule" "add" "${split[2]}" "$path"
+        commit="${commit}${NL}${path}"
         path="./${path}/dependencies"
         if [[ -f $path ]];then
             install "$(cat "$path")" yes
@@ -75,7 +77,7 @@ install () {
 
     if [[ -n $selected ]]; then
         git add .
-        git commit -m "$(echo -e "add submodules\n${selected[1]}")"
+        git commit -m "$(echo -e "add submodules\n${commit}")"
     fi
 }
 
