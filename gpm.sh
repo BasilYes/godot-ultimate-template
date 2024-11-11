@@ -22,6 +22,9 @@ init () {
     mkdir -p $SCRIPT_DIR/resources/themes
     mkdir -p $SCRIPT_DIR/scenes
     mkdir -p $SCRIPT_DIR/scripts
+    IFS='/'
+    script_path=($SCRIPT_DIR)
+    sed -i "s@godot-ultimate-template@${script_path[-1]}@g" ./project.godot
     git init
     git add .
     git commit -m "init"
