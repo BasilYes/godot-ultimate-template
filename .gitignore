@@ -19,6 +19,7 @@ bin
 
 # Addons binaries
 !/addons/**/bin
+!/addons/**
 
 # Binaries
 *.o
