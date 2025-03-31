@@ -4,6 +4,7 @@ SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 cd $SCRIPT_DIR
 
 create_dirs () {
+    mkdir -p $SCRIPT_DIR/templates
     mkdir -p $SCRIPT_DIR/addons
     mkdir -p $SCRIPT_DIR/assets/gdignore
     touch $SCRIPT_DIR/assets/gdignore/.gdignore
@@ -25,7 +26,7 @@ create_dirs () {
 }
 
 init () {
-		create_dirs
+    create_dirs
     IFS='/'
     script_path=($SCRIPT_DIR)
     sed -i "s@godot-ultimate-template@${script_path[-1]}@g" ./project.godot
