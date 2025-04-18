@@ -1,10 +1,10 @@
-addons git@github.com:BasilYes/godot-easy-multiplayer.git https://github.com/BasilYes/godot-easy-multiplayer.git
-addons git@github.com:BasilYes/godot-transitions.git git@github.com:BasilYes/godot-transitions.git
-addons git@github.com:BasilYes/godot-fast-ui.git https://github.com/BasilYes/godot-fast-ui.git
-addons git@github.com:BasilYes/godot-simple-saves.git https://github.com/BasilYes/godot-simple-saves.git
-addons git@github.com:BasilYes/godot-smart-analycis.git https://github.com/BasilYes/godot-smart-analycis.git
-addons git@github.com:BasilYes/godot-ads-manager.git https://github.com/BasilYes/godot-ads-manager.git
-addons git@github.com:BasilYes/godot-mesh-importer.git https://github.com/BasilYes/godot-mesh-importer.git
-addons git@github.com:BasilYes/godot-easy-fx.git https://github.com/BasilYes/godot-easy-fx.git
-addons git@github.com:BasilYes/godot-code-utils.git https://github.com/BasilYes/godot-code-utils.git
-templates git@github.com:BasilYes/vfx-generics.git https://github.com/BasilYes/vfx-generics.git
+addons git@github.com:BasilYes/godot-easy-multiplayer.git https://github.com/BasilYes/godot-easy-multiplayer.git m
+addons git@github.com:BasilYes/godot-transitions.git git@github.com:BasilYes/godot-transitions.git m
+addons git@github.com:BasilYes/godot-fast-ui.git https://github.com/BasilYes/godot-fast-ui.git m
+addons git@github.com:BasilYes/godot-simple-saves.git https://github.com/BasilYes/godot-simple-saves.git m
+addons git@github.com:BasilYes/godot-smart-analycis.git https://github.com/BasilYes/godot-smart-analycis.git m
+addons git@github.com:BasilYes/godot-ads-manager.git https://github.com/BasilYes/godot-ads-manager.git m
+addons git@github.com:BasilYes/godot-mesh-importer.git https://github.com/BasilYes/godot-mesh-importer.git m
+addons git@github.com:BasilYes/godot-easy-fx.git https://github.com/BasilYes/godot-easy-fx.git m
+addons git@github.com:BasilYes/godot-code-utils.git https://github.com/BasilYes/godot-code-utils.git m
+templates git@github.com:BasilYes/vfx-generics.git https://github.com/BasilYes/vfx-generics.git m
