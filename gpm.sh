@@ -3,6 +3,27 @@
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 cd $SCRIPT_DIR
 
+show_help () {
+    echo "Godot Project Manager (GPM) - A utility for managing Godot projects"
+    echo ""
+    echo "Usage: ./gpm.sh [command] [options]"
+    echo ""
+    echo "Commands:"
+    echo "  help                  Display this help message"
+    echo "  init                  Initialize the project (create directories, setup git, install addons)"
+    echo "  dirs                  Create the project directory structure"
+    echo "  install [name] [method]  Install an addon from installlist"
+    echo ""
+    echo "Options for 'install':"
+    echo "  name                  Name of the addon to install (must be in installlist)"
+    echo "  method                Installation method: 'submodule'/'m' or 'clone'/'c'"
+    echo ""
+    echo "Examples:"
+    echo "  ./gpm.sh init             # Initialize a new project"
+    echo "  ./gpm.sh install godot-demo-projects  # Install the specified addon"
+    echo "  ./gpm.sh install godot-demo-projects clone  # Install using clone method"
+}
+
 create_dirs () {
     mkdir -p $SCRIPT_DIR/templates
     mkdir -p $SCRIPT_DIR/addons
@@ -128,11 +149,13 @@ test() {
     echo $@
 }
 
-if [[ "$1" = "init" ]];then
+if [[ "$1" = "help" ]] || [[ "$1" = "-h" ]] || [[ "$1" = "--help" ]] || [[ -z "$1" ]]; then
+    show_help
+elif [[ "$1" = "init" ]]; then
     init
-elif [[ "$1" = "dirs" ]];then
+elif [[ "$1" = "dirs" ]]; then
     create_dirs
-elif [[ "$1" = "install" ]];then
+elif [[ "$1" = "install" ]]; then
     # If method is explicitly provided, use it
     if [[ "$3" = "clone" ]] || [[ "$3" = "c" ]]; then
         method="c"
@@ -143,4 +166,10 @@ elif [[ "$1" = "install" ]];then
         method=""
     fi
     install "$(cat ./installlist | grep $2) $method"
+else
+    # Show help for invalid commands
+    echo "Error: Unknown command '$1'"
+    echo ""
+    show_help
+    exit 1
 fi
