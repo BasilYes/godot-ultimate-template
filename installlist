@@ -8,3 +8,4 @@ addons git@github.com:BasilYes/godot-mesh-importer.git https://github.com/BasilY
 addons git@github.com:BasilYes/godot-easy-fx.git https://github.com/BasilYes/godot-easy-fx.git m
 addons git@github.com:BasilYes/godot-code-utils.git https://github.com/BasilYes/godot-code-utils.git m
 templates git@github.com:BasilYes/vfx-generics.git https://github.com/BasilYes/vfx-generics.git m
+templates git@github.com:BasilYesTeams/godot-event-bus.git https://github.com/BasilYesTeams/godot-event-bus.git c
